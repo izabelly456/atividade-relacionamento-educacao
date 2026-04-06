@@ -37,7 +37,7 @@ def adicionar_professor():
             session.rollback()
 
 #adicionar_professor()
-# Criando uma função para inserir dados da tabela Aula
+
 def adicionar_aula():
     with Session() as session:
         try:
@@ -51,4 +51,41 @@ def adicionar_aula():
             print(f"Erro ao adicionar aula: {e}")
             session.rollback()
 
-adicionar_aula()
+#adicionar_aula()
+
+
+def listar_aulas():
+    with Session() as session:
+        try:
+            aulas = session.query(Aula).all()
+            for aula in aulas:
+                print(f"Aula: {aula.titulo}, Professor: {aula.professor.nome}")
+        except Exception as e:
+            print(f"Erro ao listar aulas: {e}")
+
+#listar_aulas()
+
+def listar_aulas_por_professor():
+    with Session() as session:
+        try:
+            professor_id = int(input("Digite o ID do professor: "))
+            aulas = session.query(Aula).filter_by(professor_id=professor_id).all()
+            for aula in aulas:
+                print(f"Aula: {aula.titulo}, Professor: {aula.professor.nome}")
+        except Exception as e:
+            print(f"Erro ao listar aulas por professor: {e}")
+            session.rollback()
+
+#listar_aulas_por_professor()
+
+def listar_professores_com_aulas():
+    with Session() as session:
+        try:
+            professores = session.query(Professor).filter(Professor.aulas.any()).all()
+            for professor in professores:
+                print(f"Professor: {professor.nome}")
+        except Exception as e:
+            print(f"Erro ao listar professores com aulas: {e}")
+            session.rollback()
+
+#listar_professores_com_aulas()
