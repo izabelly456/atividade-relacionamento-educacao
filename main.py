@@ -89,3 +89,24 @@ def listar_professores_com_aulas():
             session.rollback()
 
 #listar_professores_com_aulas()
+
+
+def atualizar_professor():
+    with Session() as session:
+        try:
+            professor_id = int(input("Digite o ID do professor a ser atualizado: "))
+            professor = session.query(Professor).get(professor_id)
+            if professor:
+                novo_nome = input("Digite o novo nome do professor: ")
+                professor.nome = novo_nome
+                session.commit()
+                print(f"Professor atualizado para {novo_nome} com sucesso!")
+            else:
+                print("Professor não encontrado.")
+        except Exception as e:
+            print(f"Erro ao atualizar professor: {e}")
+            session.rollback()
+
+#atualizar_professor()
+
+
