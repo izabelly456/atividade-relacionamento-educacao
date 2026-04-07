@@ -127,4 +127,37 @@ def atualizar_aula():
 
 #atualizar_aula()
 
+def deletar_aula():
+    with Session() as session:
+        try:
+            aula_id = int(input("Digite o ID da aula a ser deletada: "))
+            aula = session.query(Aula).get(aula_id)
+            if aula:
+                session.delete(aula)
+                session.commit()
+                print(f"Aula {aula.titulo} deletada com sucesso!")
+            else:
+                print("Aula não encontrada.")
+        except Exception as e:
+            print(f"Erro ao deletar aula: {e}")
+            session.rollback()
+
+#deletar_aula()
+
+def deletar_professor():
+    with Session() as session:
+        try:
+            professor_id = int(input("Digite o ID do professor a ser deletado: "))
+            professor = session.query(Professor).get(professor_id)
+            if professor:
+                session.delete(professor)
+                session.commit()
+                print(f"Professor {professor.nome} deletado com sucesso!")
+            else:
+                print("Professor não encontrado.")
+        except Exception as e:
+            print(f"Erro ao deletar professor: {e}")
+            session.rollback()
+
+#deletar_professor()
 
