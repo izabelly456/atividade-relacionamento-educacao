@@ -10,18 +10,14 @@ Ele gerencia a relação entre Professores e suas Aulas.
 🛠️ 2. Tecnologias Usadas Python 3: A linguagem base.SQLAlchemy: O "tradutor" que permite falar com o banco de dados usando código Python.SQLite: O banco de dados (um arquivo .db que nasce sozinho na pasta).
 
 
-🚀 3. Como configurar (Passo a Passo)
+🚀 3. Como configurar
 
-1º Passo: Instalar o tradutor (SQLAlchemy)Abra o seu terminale digite:pip install sqlalchemy
-
-
-2º Passo: Preparar o arquivo, Garanta que o código Python está salvo (ex: app.py).
-
-3º Passo: Executar No terminal, digite:Bashpython app.py
-📂
+ Instalar o tradutor (SQLAlchemy)Abra o seu terminal e digite:pip install sqlalchemy
 
 
- 4. Entendendo as Funções (O que dá para fazer?)
+
+
+ 📂 4. Entendendo as Funções (O que dá para fazer?)
 
  adicionar_professor: Cria um novo professor no sistema.
  
