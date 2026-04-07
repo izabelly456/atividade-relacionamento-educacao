@@ -109,4 +109,22 @@ def atualizar_professor():
 
 #atualizar_professor()
 
+def atualizar_aula():
+    with Session() as session:
+        try:
+            aula_id = int(input("Digite o ID da aula a ser atualizada: "))
+            aula = session.query(Aula).get(aula_id)
+            if aula:
+                novo_titulo = input("Digite o novo título da aula: ")
+                aula.titulo = novo_titulo
+                session.commit()
+                print(f"Aula atualizada para {novo_titulo} com sucesso!")
+            else:
+                print("Aula não encontrada.")
+        except Exception as e:
+            print(f"Erro ao atualizar aula: {e}")
+            session.rollback()
+
+#atualizar_aula()
+
 
